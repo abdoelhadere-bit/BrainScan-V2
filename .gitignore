@@ -4,3 +4,6 @@ __pycache__/
 *.h5
 *.keras
 .ipynb_checkpoints/
+mlflow.db
+mlartifacts/
+mlruns/
