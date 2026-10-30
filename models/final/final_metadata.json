@@ -1,0 +1,44 @@
+{
+  "model_name": "brain_tumor_classifier",
+  "architecture": "InceptionV3",
+  "training_strategy": "fine_tuning",
+  "selected_experiment": "ft_B_mixed8_lr1e-5",
+  "unfreeze_from": "mixed8",
+  "learning_rate": 1e-05,
+  "optimizer": "Adam",
+  "input_size": [
+    224,
+    224
+  ],
+  "normalization": "pixel / 127.5 - 1.0",
+  "class_names": [
+    "glioma",
+    "meningioma",
+    "no_tumor",
+    "pituitary"
+  ],
+  "best_epoch": 29,
+  "metrics": {
+    "train": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "ce": 0.00024715374456718564
+    },
+    "val": {
+      "accuracy": 0.940754039497307,
+      "precision": 0.9374449809621715,
+      "recall": 0.9399782522682592,
+      "f1": 0.9386170399403564,
+      "ce": 0.18720288574695587
+    },
+    "test": {
+      "accuracy": 0.9336917562724014,
+      "precision": 0.9351527748274987,
+      "recall": 0.9393671136594196,
+      "f1": 0.9367946891400238,
+      "ce": 0.2241954803466797
+    }
+  }
+}
