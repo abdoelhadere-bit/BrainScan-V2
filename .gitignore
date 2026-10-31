@@ -7,3 +7,6 @@ __pycache__/
 mlflow.db
 mlartifacts/
 mlruns/
+# Large dataset files
+
+kaggle_upload/*.zip
