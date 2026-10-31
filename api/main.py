@@ -59,6 +59,16 @@ def home():
     }
 
 
+@app.get("/health")
+def health():
+    return {
+        "status": "healthy",
+        "classifier_loaded": classifier is not None,
+        "detector_loaded": detector is not None
+    }
+
+
+
 # ==================================================
 # 4. IMAGE VALIDATION
 # ==================================================

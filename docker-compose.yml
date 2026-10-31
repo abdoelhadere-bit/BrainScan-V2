@@ -1,0 +1,56 @@
+version: "3.9"
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    container_name: brainscan_api
+    ports:
+      - "${FASTAPI_PORT:-8000}:8000"
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    depends_on:
+      - mlflow
+
+  app:
+    build:
+      context: .
+      dockerfile: app/Dockerfile
+    container_name: brainscan_app
+    ports:
+      - "${STREAMLIT_PORT:-8501}:8501"
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    depends_on:
+      - api
+
+  mlflow:
+    build:
+      context: .
+      dockerfile: mlflow/Dockerfile
+    container_name: brainscan_mlflow
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./mlruns:/mlruns
+    environment:
+      MLFLOW_TRACKING_URI: http://mlflow:5000
+
+  airflow:
+    build:
+      context: .
+      dockerfile: airflow/Dockerfile
+    container_name: brainscan_airflow
+    depends_on:
+      - mlflow
+    volumes:
+      - .:/opt/brainscan
+    env_file:
+      - .env
+    ports:
+      - "8080:8080"

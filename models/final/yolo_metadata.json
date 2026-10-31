@@ -1,0 +1,28 @@
+{
+    "model_name": "brain_tumor_detector",
+    "architecture": "YOLOv8n",
+    "task": "object_detection",
+    "classes": {
+        "0": "Glioma",
+        "1": "Meningioma",
+        "2": "Pituitary"
+    },
+    "input_size": 640,
+    "weights": "best.pt",
+    "evaluation": {
+        "split": "test",
+        "images": 712,
+        "instances": 693,
+        "metrics": {
+            "metrics/precision(B)": 0.9681989368916671,
+            "metrics/recall(B)": 0.9623875421225372,
+            "metrics/mAP50(B)": 0.9884357906218701,
+            "metrics/mAP50-95(B)": 0.8378053196332036,
+            "fitness": 0.8378053196332036
+        }
+    },
+    "mlflow": {
+        "experiment": "brainscan-v2-detection",
+        "run_id": "44f817dae3e94e9d98862f606bf29a67"
+    }
+}
